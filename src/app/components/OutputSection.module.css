@@ -95,6 +95,32 @@
   transform: none;
 }
 
+/* Xでポストするボタンのスタイル */
+.postBtn:not(:disabled) {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.postBtn:hover:not(:disabled) {
+  background: #333333;
+  border-color: #333333;
+  transform: translateY(-2px);
+}
+
+/* 共有ボタンのスタイル */
+.shareBtn:not(:disabled) {
+  background: #4f8cff;
+  color: #ffffff;
+  border-color: #4f8cff;
+}
+
+.shareBtn:hover:not(:disabled) {
+  background: #3b7ce0;
+  border-color: #3b7ce0;
+  transform: translateY(-2px);
+}
+
 /* レスポンシブ調整 */
 @media (max-width: 480px) {
   .outputSection {

@@ -27,14 +27,14 @@ export default function OutputSection({
         <button 
           onClick={onPost}
           disabled={!resultText}
-          className={styles.secondaryBtn}
+          className={`${styles.secondaryBtn} ${styles.postBtn}`}
         >
           Xでポストする
         </button>
         <button 
           onClick={onShare}
           disabled={!resultText}
-          className={styles.secondaryBtn}
+          className={`${styles.secondaryBtn} ${styles.shareBtn}`}
         >
           共有する
         </button>
