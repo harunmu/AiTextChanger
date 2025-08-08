@@ -1,0 +1,90 @@
+/* リセットとベーススタイル */
+.container {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ヘッダー */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* メインコンテンツ */
+.main {
+  max-width: 1200px;
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 950px) {
+  .main {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* フッター */
+.footer {
+  text-align: center;
+  color: white;
+  opacity: 0.8;
+  margin-top: auto;
+}
+
+/* 成功・エラーメッセージ */
+.message {
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.success {
+  background: #c6f6d5;
+  color: #22543d;
+  border: 1px solid #9ae6b4;
+}
+
+.error {
+  background: #fed7d7;
+  color: #742a2a;
+  border: 1px solid #feb2b2;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+} 
