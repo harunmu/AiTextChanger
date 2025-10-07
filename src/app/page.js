@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import styles from './page.module.css';
 import InputSection from './components/InputSection';
@@ -42,13 +43,13 @@ export default function Home() {
       throw new Error('APIキーが設定されていません');
     }
     
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_API_KEY;
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=' + GEMINI_API_KEY;
     const requestBody = {
       contents: [
         {
           parts: [
             {
-              text: `${themePrompt}\n\n文章: ${text}\n\n変換後の文章のみを出力してください。`
+              text: `${themePrompt}\n\n元の文章: "${text}"\n\n上記の文章を指定されたスタイルに変換してください。変換後の文章だけを回答してください。説明や追加の文章は不要です。`
             }
           ]
         }
@@ -75,8 +76,23 @@ export default function Home() {
       }
       
       const data = await response.json();
-      const result = data.candidates?.[0]?.content?.parts?.[0]?.text || '変換結果が取得できませんでした';
-      return result;
+      console.log('Gemini API Response:', data); // デバッグ用
+
+      if (!data.candidates || data.candidates.length === 0) {
+        throw new Error('APIレスポンスに候補がありません');
+      }
+
+      const candidate = data.candidates[0];
+      if (!candidate.content || !candidate.content.parts || candidate.content.parts.length === 0) {
+        throw new Error('APIレスポンスに内容がありません');
+      }
+
+      const result = candidate.content.parts[0].text;
+      if (!result || result.trim() === '') {
+        throw new Error('空の変換結果が返されました');
+      }
+
+      return result.trim();
     } catch (error) {
       console.error('Gemini APIエラー:', error);
       throw error;
